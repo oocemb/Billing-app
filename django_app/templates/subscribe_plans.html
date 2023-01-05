@@ -1,0 +1,30 @@
+{%extends 'layouts/base.html'%}
+{%load static%}
+
+{%block content%}
+  <div class="outer__inner">
+    <div class="section-bg collections">
+      <div class="collections__center center">
+        <div class="collections__wrapper">
+          <h3 class="collections__title h3">Subscribe Plan selection</h3>
+          <div class="collections__inner">
+            <div class="collections__slider js-slider-collections">
+              {% for sub in subs %}
+              <div class="main__details">
+                <div class="main__wrap">
+                  <div class="main__info">plan</div>
+                  <div class="main__currency">{{sub.name}}</div>
+                  <div class="main__price"></div>
+                  <div class="main__info">{{sub.device}} device</div>
+                  <div class="main__info">{{sub.quality}} quality</div>
+                </div>
+                <div class="main__btns"><a class="button main__button" href="{% url 'front_end:payment_gate'%}?product_type=subs&subs_plan={{sub.uuid}}" data-effect="mfp-zoom-in">{{sub.price}}₽</a></div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{%endblock%}

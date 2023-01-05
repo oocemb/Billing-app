@@ -1,0 +1,114 @@
+{%extends 'layouts/base.html'%}
+{%load static%}
+
+{%block content%}
+  <div class="outer__inner">
+    <div class="section-pt80 wallet">
+      <div class="wallet__center center">
+        <div class="wallet__head"><a class="wallet__back" href="{% url 'front_end:subscribe_plans' %}">
+            <svg class="icon icon-arrow-prev">
+              <use xlink:href="#icon-arrow-prev"></use>
+            </svg>
+            <div class="wallet__stage h2">Choose your payment method</div></a></div>
+        <div class="wallet__body">
+          <div class="wallet__menu">
+              <a class="wallet__link" href="#">
+                  <div class="wallet__icon" style="background-color: #9757D7;">
+                    <svg class="icon icon-wallet">
+                      <use xlink:href="#icon-wallet"></use>
+                    </svg>
+                    <svg class="icon icon-check" style="fill: #9757D7;">
+                      <use xlink:href="#icon-check"></use>
+                    </svg>
+                  </div><span>Roobokassa</span>
+                  <div class="wallet__arrow">
+                    <svg class="icon icon-arrow-next">
+                      <use xlink:href="#icon-arrow-next"></use>
+                    </svg>
+                  </div>
+              </a>
+              <a class="wallet__link" href="#">
+                  <div class="wallet__icon" style="background-color: #3772FF;">
+                    <svg class="icon icon-wallet">
+                      <use xlink:href="#icon-wallet"></use>
+                    </svg>
+                    <svg class="icon icon-check" style="fill: #3772FF;">
+                      <use xlink:href="#icon-check"></use>
+                    </svg>
+                  </div><span>SberPay</span>
+                  <div class="wallet__arrow">
+                    <svg class="icon icon-arrow-next">
+                      <use xlink:href="#icon-arrow-next"></use>
+                    </svg>
+                  </div>
+              </a>
+              <a class="wallet__link" href="#">
+                  <div class="wallet__icon" style="background-color: #45B26B;">
+                    <svg class="icon icon-wallet">
+                      <use xlink:href="#icon-wallet"></use>
+                    </svg>
+                    <svg class="icon icon-check" style="fill: #45B26B;">
+                      <use xlink:href="#icon-check"></use>
+                    </svg>
+                  </div><span>YandexPay</span>
+                  <div class="wallet__arrow">
+                    <svg class="icon icon-arrow-next">
+                      <use xlink:href="#icon-arrow-next"></use>
+                    </svg>
+                  </div>
+              </a>
+              <a class="wallet__link" href="#">
+                  <div class="wallet__icon" style="background-color: #EF466F;">
+                    <svg class="icon icon-wallet">
+                      <use xlink:href="#icon-wallet"></use>
+                    </svg>
+                    <svg class="icon icon-check" style="fill: #EF466F;">
+                      <use xlink:href="#icon-check"></use>
+                    </svg>
+                  </div><span>Square pay</span>
+                  <div class="wallet__arrow">
+                    <svg class="icon icon-arrow-next">
+                      <use xlink:href="#icon-arrow-next"></use>
+                    </svg>
+                  </div>
+              </a>
+          </div>
+          <div class="wallet__wrapper">
+            <div class="wallet__bg"><img srcSet="{% static 'img/content/connect-bg@2x.jpg' %}" src="{% static 'img/content/connect-bg.jpg' %}" alt="Connect wallet"></div>
+            <div class="wallet__group">
+              <div class="wallet__item">
+                <div class="wallet__title h3">Scan to connect</div>
+                <div class="wallet__text">Powered by UI8.Wallet</div>
+                <div class="wallet__box">
+                  <div class="wallet__code"><img src="img/content/qr-code.png" alt="Qr-code"></div>
+                </div>
+                <button class="button-stroke wallet__button">Don’t have a wallet app?</button>
+              </div>
+              <div class="wallet__item">
+                <div class="wallet__title h3">Terms of service</div>
+                <div class="wallet__text">Please take a few minutes to read and understand
+                    <span>Stacks Terms of Service</span>. To continue, you’ll need to accept the terms of services by checking the boxes.
+                </div>
+                <div class="wallet__preview"><img srcSet="img/content/connect-pic@2x.jpg 2x" src="img/content/connect-pic.jpg" alt="Connect wallet"></div>
+                <div class="wallet__variants">
+                  <label class="checkbox">
+                    <input class="checkbox__input" type="checkbox" checked="checked"/><span class="checkbox__inner">
+                      <span class="checkbox__tick"></span><span class="checkbox__text">I am at least 13 year old</span></span>
+                  </label>
+                  <label class="checkbox">
+                    <input class="checkbox__input" type="checkbox"/><span class="checkbox__inner">
+                      <span class="checkbox__tick"></span><span class="checkbox__text">I agree Stack terms of service</span></span>
+                  </label>
+                </div>
+                <div class="wallet__btns">
+                  <button class="button-stroke wallet__button">Cancel</button>
+                    <a class="button wallet__button" href="{% url 'front_end:redirect_to_gate_url' %}?payment_type={{payment_type}}&content={{content}}">Get started now</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{%endblock%}

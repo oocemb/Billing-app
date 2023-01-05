@@ -1,0 +1,52 @@
+{%extends 'layouts/base.html'%}
+{%load static%}
+{%block content%}
+  <div class="outer__inner">
+    <div class="section item">
+      <div class="item__center center">
+        <div class="item__bg">
+          <div class="item__preview">
+            <div class="item__categories">
+              {% for genre in product.category.all %}
+                <div class="status-purple item__category">{{genre.name}}</div>
+              {% endfor %}
+            </div><img srcSet="{{product.main_image.url}} 2x" src="{{product.main_image.url}}" alt="Item">
+          </div>
+        </div>
+        <div class="item__details">
+          <!--LOOK - Movie name-->
+          <h1 class="item__title h3">{{product.name}}</h1>
+          <div class="item__cost">
+            {% if product.subscription_plan %}
+              <!--LOOK - Movie access level-->
+              <div class="status-stroke-green item__price">{{product.subscription_plan}}</div>
+            {% else %}
+              <div class="status-stroke-green item__price">{{product.price_tier}}</div>
+            {% endif %}
+            <!--LOOK - Movie ratign-->
+            <div class="status-stroke-black item__price">imdb {{product.imdb}}</div>
+          </div>
+          <!--LOOK - Movie description-->
+          <div class="item__text">{{product.description}}</div>
+          <div class="item__control">
+          {% if product.price_tier %}
+            {% if product.price_tier.name == "Free" or product.uuid in pur_mov_uuids %}
+            <!--LOOK - Film Player Variant-->
+              <div class="main__btns"><a class="button main__button" href="{% url 'front_end:movie_player' product.uuid %}">Play</a></div>
+            {% else %}
+            <!--LOOK - Film Purchase variant-->
+              <div class="main__btns"><a class="button main__button" href="{% url 'front_end:payment_gate'%}?product_type=buy&movie_id={{product.uuid}}&purchased_from_url={{request.path}}" data-effect="mfp-zoom-in">Purchase now {{product.price_tier.price}}₽</a></div>
+            {% endif %}
+          {% else %}
+            {% if user.profile.subscription_plan %}
+              <div class="main__btns"><a class="button main__button" href="{% url 'front_end:movie_player' product.uuid %}">Play</a></div>
+            {% else %}
+              <div class="main__btns"><a class="button main__button" href="{% url 'front_end:subscribe_plans' %}">Subscribe</a></div>
+            {% endif %}
+          {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{%endblock%}

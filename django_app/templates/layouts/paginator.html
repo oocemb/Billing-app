@@ -1,0 +1,15 @@
+{%if is_paginated %}
+<div class="discover__btns pagination">
+    <a class="button-stroke button-small {%if not prev_url%}disabled{%endif%}" href="{{prev_url}}">Previous</a>
+    {%for n in featured_products.paginator.page_range %}
+        {%if featured_products.number == n%}
+            <a class="discover__btns active" aria-current="page">
+                <a class="button-stroke button-small" href="?page={{n}}">{{n}}</a>
+            </a>
+        {%elif n > featured_products.number|add:-3 and n < featured_products.number|add:3 %}
+            <a class="button-stroke button-small" href="?page={{n}}">{{n}}</a>
+        {%endif%}
+    {%endfor%}
+    <a class="button-stroke button-small {%if not next_url%}disabled{%endif%}" href="{{next_url}}">Next</a>
+</div>
+{%endif%}

@@ -1,0 +1,64 @@
+{%extends 'layouts/base.html'%}
+{%load static%}
+
+{%block content%}
+  <div class="outer__inner">
+    <div class="section discover">
+      <div class="discover__center center">
+        <h3 class="discover__title h3">Movies</h3>
+        <div class="profile__wrapper js-tabs">
+          <div class="profile__nav">
+            <!--LOOK - list of genres-->
+            <a class="profile__link js-tabs-link active" href="#">All items</a>
+            {% for item in categories_count %}
+              <a class="profile__link js-tabs-link" href="#">{{item.category__name}}</a>
+            {% endfor%}
+          </div>
+        </div>
+        <div class="discover__list">
+          <div class="discover__slider js-slider-discover js-slider-resize">
+            <!--LOOK - list of movie card-->
+          {% for product in featured_products %}
+
+            <div class="card">
+              <!--LOOK - film card-->
+              <div class="card__preview"><img srcSet={{product.main_image.url}} src={{product.main_image.url}} alt="Card preview"/>
+                <div class="card__control">
+                  <!--LOOK - film genre-->
+                  <div class="status-green card__category">{{product.category.first}}</div>
+                  <button class="card__favorite">
+                    <svg class="icon icon-heart">
+                      <use xlink:href="#icon-heart"></use>
+                    </svg>
+                  </button>
+
+                </div>
+              </div><a class="card__link" href="{% url 'front_end:movie_detail' product.uuid %}">
+                <div class="card__body">
+                  <div class="card__line">
+                    <!--LOOK - film name-->
+                    <div class="card__title">{{product.name}}</div>
+                    <!--LOOK - film Access level-->
+                    <div class="card__price">
+                      {% if product.subscription_plan %}
+                      Subs
+                      {% else %}
+                        {% if product.price_tier.name == "Free" %}
+                        Free
+                        {% else %}
+                        Buy
+                        {% endif %}
+                      {% endif %}
+                    </div>
+                  </div>
+                </div></a>
+            </div>
+            {% endfor%}
+
+          </div>
+        </div>
+        {% include "layouts/paginator.html" %}
+      </div>
+    </div>
+  </div>
+{%endblock%}

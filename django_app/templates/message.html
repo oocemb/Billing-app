@@ -1,0 +1,18 @@
+{%extends 'layouts/base.html'%}
+{%load static%}
+{%block content%}
+      <div class="outer__inner">
+        <div class="section result">
+          <div class="result__center center">
+            <div class="result__wrap">
+              <h2 class="result__title h2">{{msg}}</h2>
+              <div class="result__info">{{msg}}</div>
+            </div>
+            <div class="result__preview">
+              <img class="some-icon" srcSet="{% static 'img/content/figures@2x.png'%}" src="{% static 'img/content/figures.png'%}" alt="Figures">
+              <img class="some-icon-dark" srcSet="{% static 'img/content/figures-dark@2x.png'%}" src="{% static 'img/content/figures-dark.png'%}" alt="Figures">
+            </div>
+          </div>
+        </div>
+      </div>
+{%endblock%}

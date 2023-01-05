@@ -1,0 +1,59 @@
+{%extends 'layouts/base.html'%}
+{%load static%}
+
+{%block content%}
+  <div class="outer__inner">
+    <div class="control">
+      <div class="control__center center"><a class="button-stroke button-small control__button" href="index.html">
+          <svg class="icon icon-arrow-prev">
+            <use xlink:href="#icon-arrow-prev"></use>
+          </svg><span>Back to Plans</span></a></div>
+    </div>
+    <div class="section-pt80 details">
+      <div class="details__center center">
+        <div class="details__top">
+          <h1 class="details__title h2">Provide payment method</h1>
+        </div>
+        <div class="details__row">
+          <div class="details__col">
+            <form method="post">
+              {% csrf_token %}
+              <input hidden name="product_type" value="{{product_type}}">
+              <input hidden name="content" value="{{content}}">
+              <input hidden name="purchased_from_url" value="{{purchased_from_url}}">
+
+              <div class="details__list">
+                <div class="details__item">
+                  <div class="details__category">Choose convenient payment methods</div>
+                  <div class="details__fieldset">
+                    <div class="field">
+                      <div class="field__label">Method</div>
+                      <div class="field__wrap">
+                        <select class="select" name="paymethod">
+                          <!--LOOK: PAYMENT METHODS-->
+                          <option value="robo">Robokassa</option>
+                          <option value="sber">Sber pay</option>
+                          <option value="yoka">Yookassa</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="field">
+                      <div class="field__label">Promocode</div>
+                      <div class="field__wrap">
+                        <!--LOOK: COUPON-->
+                        <input class="field__input" type="text" name="coupon" placeholder="Promocode">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="details__btns">
+                  <button class="button details__button" type="submit">Pay!</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{%endblock%}

@@ -1,0 +1,59 @@
+{%load static%}
+<!-- footer-->
+  <footer class="footer">
+    <div class="footer__center center">
+      <div class="footer__row">
+        <div class="footer__col"><a class="footer__logo" href="{% url 'front_end:home' %}">
+          <img class="some-icon" src="{% static 'img/logo-dark.png'%}" alt="Theatr">
+          <img class="some-icon-dark" src="{% static 'img/logo-light.png'%}" alt="Theatr">
+        </a>
+          <div class="footer__info">The new way to watch movies.</div>
+          <div class="footer__theme">
+            <div class="footer__details">Dark theme</div>
+            <label class="theme js-theme theme_big">
+              <input class="theme__input" type="checkbox"/><span class="theme__inner"><span class="theme__box"></span></span>
+            </label>
+          </div>
+        </div>
+        <div class="footer__col">
+          <div class="footer__group">
+            <div class="footer__head">Theatr.
+              <svg class="icon icon-arrow-bottom">
+                <use xlink:href="#icon-arrow-bottom"></use>
+              </svg>
+            </div>
+            <div class="footer__body">
+              <div class="footer__menu"><a class="footer__link" href="{% url 'front_end:home' %}">Movies</a>
+                <a class="footer__link" href="{% url 'front_end:subscribe_plans' %}">Plans</a></div>
+            </div>
+          </div>
+          <div class="footer__group">
+            <div class="footer__head">User info
+              <svg class="icon icon-arrow-bottom">
+                <use xlink:href="#icon-arrow-bottom"></use>
+              </svg>
+            </div>
+            <div class="footer__body">
+              <div class="footer__menu"><a class="footer__link" href="{% url 'front_end:my_movies' %}">My Movies</a><a class="footer__link" href="{% url 'front_end:user_subscription' %}">My Plan</a></div>
+            </div>
+          </div>
+        </div>
+        <div class="footer__col">
+          <div class="footer__category">Join Newsletter</div>
+          <div class="footer__text">Subscribe our newsletter to get promo</div>
+          <form class="subscription">
+            <input class="subscription__input" type="email" name="email" placeholder="Enter your email" required="required"/>
+            <button class="subscription__btn">
+              <svg class="icon icon-arrow-next">
+                <use xlink:href="#icon-arrow-next"></use>
+              </svg>
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="footer__foot">
+        <div class="footer__copyright">Copyright © 2022 YP Graduate work. All rights reserved</div>
+        <div class="footer__note">We use cookies for better service. <a href="/#">Accept</a></div>
+      </div>
+    </div>
+  </footer>

@@ -1,0 +1,45 @@
+{%extends 'layouts/base.html'%}
+{%load static%}
+
+{%block content%}
+<div class="outer__inner">
+    <div class="section upload">
+        <div class="upload__center center">
+            <div class="upload__wrapper">
+                <div class="main__details">
+                    <div class="main__subtitle h3">Subscriptions</div>
+                    <div class="main__line"></div>
+                    {% if user.profile.subscription_plan %}
+                    <div class="main__wrap">
+                        <div class="main__info">current plan</div>
+                        <div class="main__currency">{{user.profile.subscription_plan}}</div>
+                        {% if user.profile.subscription_status == "cancel" %}
+                        {% else %}
+                        <div class="main__price"><small>after {{day_new_recurrent}} days we charge {{user.profile.subscription_plan.price}}₽</small></div>
+                        {% endif %}
+                        <div class="main__info">status: {{user.profile.subscription_status}}</div>
+                    </div>
+                    <div class="main__btns">
+                        {% if user.profile.subscription_plan.name != "Pro4K" or user.profile.subscription_status == "cancel" %}
+                        <a class="button main__button" href="{% url 'front_end:subscribe_plans' %}">Upgrade</a>
+                        {% endif %}
+                        {% if user.profile.subscription_status != "cancel" %}
+                        <a class="button-stroke main__button" href="{% url 'front_end:subs_cancel' %}">Cancel</a>
+                        {% endif %}
+                    </div>
+                    {% else %}
+                    <div class="main__wrap">
+                        <div class="main__info">You not current plan</div>
+                        <div class="main__currency">Subscribe!</div>
+                    </div>
+                    <div class="main__btns">
+                        <a class="button main__button" href="{% url 'front_end:subscribe_plans' %}">Subscribe</a>
+                    </div>
+
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock%}

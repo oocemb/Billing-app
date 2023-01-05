@@ -1,0 +1,10 @@
+fastapi==0.85.0
+uvicorn==0.18.3
+jinja2==3.1.2
+piccolo[postgres]==0.92.0
+piccolo_admin==0.35.0
+requests==2.28.1
+pydantic==1.10.2
+python-dateutil==2.8.2
+aiohttp==3.8.3
+python-dotenv==0.21.0

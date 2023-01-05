@@ -1,0 +1,79 @@
+{%extends 'layouts/base.html'%}
+{%load static%}
+
+{%block content%}
+      <div class="outer__inner">
+        <div class="section-pt80 details">
+          <div class="details__center center">
+            <div class="details__top">
+              <h1 class="details__title h2">Edit profile</h1>
+              <div class="details__info">You can set preferred display name and manage other personal settings.</div>
+            </div>
+            <div class="details__row">
+              <div class="details__col">
+                <div class="details__user">
+                  <div class="details__avatar"><img src="{{user.profile.avatar.url}}" alt="Avatar"></div>
+                  <div class="details__wrap">
+                    <div class="details__stage">Profile photo</div>
+                    <div class="details__text">We recommend an image of at least 400x400. Gifs work too <span role="img" aria-label="hooray">🙌</span></div>
+                    <div class="details__file">
+                      <input class="details__input" type="file">
+                      <button class="button-stroke button-small details__button">Upload</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="details__col">
+                <div class="details__list">
+                  <div class="details__item">
+                    <div class="details__category">Account info</div>
+                    <div class="details__fieldset">
+                      <div class="field">
+                        <div class="field__label">display name</div>
+                        <div class="field__wrap">
+                          <input class="field__input" type="text" name="name" placeholder="Enter your display name" required>
+                        </div>
+                      </div>
+                      <div class="field">
+                        <div class="field__label">email</div>
+                        <div class="field__wrap">
+                          <input class="field__input" type="text" name="email" placeholder="Enter You Email" required>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="details__item">
+                    <div class="details__category">Passwords</div>
+                    <div class="details__fieldset">
+                      <div class="field">
+                        <div class="field__label">old password</div>
+                        <div class="field__wrap"></div>
+                        <input class="field__input" type="password" name="old_password" placeholder="Old password">
+                      </div>
+                      <div class="field">
+                        <div class="field__label">password</div>
+                        <div class="field__wrap"></div>
+                        <input class="field__input" type="password" name="new_password1" placeholder="New password">
+                      </div>
+                      <div class="field">
+                        <div class="field__label">password again</div>
+                        <div class="field__wrap">
+                          <input class="field__input" type="password" name="new_password2" placeholder="New password again">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="details__note">You can Edit your data freely</div>
+                <div class="details__btns">
+                  <button class="button details__button">Update Profile</button><a class="details__clear" href="#">
+                    <svg class="icon icon-circle-close">
+                      <use xlink:href="#icon-circle-close"></use>
+                    </svg>Clear all</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+{%endblock%}

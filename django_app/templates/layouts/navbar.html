@@ -1,0 +1,87 @@
+{%load static%}
+<!-- header-->
+<header class="header js-header registered" data-id="#header">
+<div class="header__center center"><a class="header__logo" href="{% url 'front_end:home' %}"><img class="some-icon" src="{% static 'img/logo-dark.png'%}" alt="theatr"><img class="some-icon-dark" src="{% static 'img/logo-light.png'%}" alt="theatr"></a>
+  <div class="header__wrapper js-header-wrapper">
+    <nav class="header__nav"><a class="header__link" href="{% url 'front_end:home' %}">Movies</a>
+      <a class="header__link" href="{% url 'front_end:subscribe_plans' %}">Plans</a>
+      <a class="header__link" href="{% url 'login' %}">Register</a>
+      <a class="header__link" href="{% url 'login' %}">Login</a>
+    </nav>
+  </div>
+  {% if not user.is_authenticated %}
+  <!--LOOK - register--><a class="button-small button-stroke header__button header__upload" href="{% url 'login' %}">Register</a>
+  <!--LOOK - login button--><a class="button-small header__button header__upload" href="{% url 'login' %}">Login</a>
+  {% else %}
+  <div class="header__item header__item_user js-header-item js-demo-user">
+
+    <button class="header__head js-header-head">
+      <div class="header__avatar"><img src="{{user.profile.avatar.url}}" alt="Avatar"></div>
+      <div class="header__wallet">Account</div>
+    </button>
+
+    <!--LOOK - menu-->
+    <div class="header__body js-header-body">
+      <div class="header__menu">
+        <!--LOOK  - user profile menu--><a class="header__link" href="{% url 'front_end:user_profile' %}">
+          <div class="header__icon">
+            <svg class="icon icon-user">
+              <use xlink:href="#icon-user"></use>
+            </svg>
+          </div>
+          <div class="header__text">My profile</div></a>
+        <!--LOOK  - user movies menu--><a class="header__link" href="{% url 'front_end:my_movies' %}">
+          <div class="header__icon">
+            <svg class="icon icon-image">
+              <use xlink:href="#icon-image"></use>
+            </svg>
+          </div>
+          <div class="header__text">My Movies</div></a>
+        <!--LOOK  - user subscription menu--><a class="header__link" href="{% url 'front_end:user_subscription' %}">
+          <div class="header__icon">
+            <svg class="icon icon-coin">
+              <use xlink:href="#icon-coin"></use>
+            </svg>
+          </div>
+          <div class="header__text">Current Subscription</div></a>
+        <!--LOOK  - user payment history menu--><a class="header__link" href="{% url 'front_end:user_payment_history' %}">
+          <div class="header__icon">
+            <svg class="icon icon-lightning">
+              <use xlink:href="#icon-lightning"></use>
+            </svg>
+          </div>
+          <div class="header__text">Payment History</div></a>
+        {% if user.is_staff %}
+        <!--LOOK  - content admin--><a class="header__link" href="{% url 'admin:index' %}">
+          <div class="header__icon">
+            <svg class="icon icon-arrow-expand">
+              <use xlink:href="#icon-arrow-expand"></use>
+            </svg>
+          </div>
+          <div class="header__text">Content Admin</div></a>
+        {% endif %}
+        <div class="header__link">
+          <div class="header__icon">
+            <svg class="icon icon-bulb">
+              <use xlink:href="#icon-bulb"></use>
+            </svg>
+          </div>
+          <div class="header__text">Dark theme</div>
+          <label class="theme js-theme">
+            <input class="theme__input" type="checkbox"/><span class="theme__inner"><span class="theme__box"></span></span>
+          </label>
+        </div>
+        <!--LOOK  - user logout--><a class="header__link" href="{% url 'logout' %}">
+          <div class="header__icon">
+            <svg class="icon icon-exit">
+              <use xlink:href="#icon-exit"></use>
+            </svg>
+          </div>
+          <div class="header__text">Logout</div></a>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+  <button class="header__burger js-header-burger"></button>
+</div>
+</header>

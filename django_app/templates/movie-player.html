@@ -1,0 +1,36 @@
+{%extends 'layouts/base.html'%}
+{%load static%}
+{%block content%}
+  <div class="outer__inner">
+    <div class="section item">
+      <div class="item__center center">
+        <div class="main__row">
+          <div class="player">
+            <div class="player__preview"><img srcSet="{% static 'img/content/video_frame.jpg' %} 2x" src="{% static 'img/content/video_frame.jpg' %}" alt="Video Preview"></div>
+            <div class="player__control">
+              <button class="player__button">
+                <svg class="icon icon-play">
+                  <use xlink:href="#icon-play"></use>
+                </svg>
+              </button>
+              <div class="player__line">
+                <div class="player__progress" style="width: 20%;"></div>
+              </div>
+              <div class="player__time">1:20:08</div>
+              <button class="player__button">
+                <svg class="icon icon-volume">
+                  <use xlink:href="#icon-volume"></use>
+                </svg>
+              </button>
+              <button class="player__button">
+                <svg class="icon icon-full-screen">
+                  <use xlink:href="#icon-full-screen"></use>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{%endblock%}
